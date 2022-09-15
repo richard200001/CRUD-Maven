@@ -1,0 +1,7 @@
+C:\Users\Dell\Documents\NetBeansProjects\projectperson\src\main\java\View\main.java
+C:\Users\Dell\Documents\NetBeansProjects\projectperson\src\main\java\DAO\DAOPersona.java
+C:\Users\Dell\Documents\NetBeansProjects\projectperson\src\main\java\Controller\PersonaJpaController.java
+C:\Users\Dell\Documents\NetBeansProjects\projectperson\src\main\java\Controller\exceptions\PreexistingEntityException.java
+C:\Users\Dell\Documents\NetBeansProjects\projectperson\src\main\java\Entity\Persona.java
+C:\Users\Dell\Documents\NetBeansProjects\projectperson\src\main\java\Controller\exceptions\NonexistentEntityException.java
+C:\Users\Dell\Documents\NetBeansProjects\projectperson\src\main\java\Controller\exceptions\IllegalOrphanException.java
