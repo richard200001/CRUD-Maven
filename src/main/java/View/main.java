@@ -6,6 +6,7 @@ package View;
 
 import DAO.DAOPersona;
 import Entity.Persona;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,8 +23,9 @@ public class main {
                     + "1.Crear usuario\n"
                     + "2.Editar usuario\n"
                     + "3.ver usuario\n"
-                    + "4.eliminar usuario\n"
-                    + "5.Salir\n"
+                    + "4.Ver todos los usuarios\n"
+                    + "5.eliminar usuario\n"
+                    + "6.Salir\n"
                     + "-------------------");
             do
         {
@@ -41,7 +43,12 @@ public class main {
                 String Cedula=sc.nextLine();
                 System.out.println("Inserte la edad: ");
                 int Edad = sc.nextInt();
-                System.out.println(obj.Crear(Nombre, Cedula, Edad));
+                boolean varOne =obj.Crear(Nombre, Cedula, Edad);
+                if(varOne){
+                    System.out.println("Se creó el usuario correctamente");
+                }else{
+                    System.out.println("no se pudo crear el usuario");
+                }
                 
             }
             if(num==2){
@@ -55,7 +62,12 @@ public class main {
                 String Cedula=sca.nextLine();
                 System.out.println("Inserte la edad: ");
                 int Edad = sca.nextInt();
-                System.out.println(obj.Editar(Id,Nombre, Cedula, Edad));
+                boolean varTwo = obj.Editar(Id,Nombre, Cedula, Edad);
+                if(varTwo){
+                     System.out.println("Se editó el usuario correctamente");
+                }else{
+                    System.out.println("no se pudo editar el usuario");
+                }
             }
             if(num==3){
                 System.out.println("Inserte el id del usuario que desea ver");
@@ -70,11 +82,37 @@ public class main {
                 System.out.println("----------------------------");
             }
             if(num==4){
+                List <Persona> lista = new ArrayList();
+                
+                lista=obj.DevolverTodos();
+               for(Persona s: lista){
+                   System.out.println(s);
+                   
+               }
+            }
+            if(num==5){
                 System.out.println("Inserte el id del usuario que desea eliminar");
                 Scanner sc=new Scanner(System.in);
                 int id=sc.nextInt();
-                System.out.println(obj.Borrar(id));
+                System.out.println("Está seguro de que desea eliminar el usuario?");
+                System.out.println("Tecleé s para confirmar o n para cancelar: ");
+                String opc;
+                 sc.nextLine();
+                opc=sc.nextLine();
+               
+                if(opc.equals("s")){
+                     boolean varTrhee = obj.Borrar(id);
+                     if(varTrhee){
+                          System.out.println("Se eliminó el usuario correctamente");
+                     }else{
+                          System.out.println("no se pudo eliminar el usuario");
+                     }
+                }else{
+                    System.out.println("Se canceló la operación de eliminación de usuario :)");
+                }
+               
             }
-        }while(num!=5);
+        }while(num!=6);
     }
 }
+

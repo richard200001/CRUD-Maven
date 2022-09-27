@@ -7,28 +7,29 @@ package DAO;
 import Controller.PersonaJpaController;
 import Controller.exceptions.NonexistentEntityException;
 import Entity.Persona;
+import java.util.List;
 
 /** * @author David */
 
 public class DAOPersona {
     
-    private  Persona Objeto = new Persona();
+     private  Persona Objeto = new Persona();
     private final PersonaJpaController Metodo = new PersonaJpaController();
     
-    public String Crear(String Nombre, String Cedula, int Edad){
+    public boolean Crear(String Nombre, String Cedula, int Edad){
         Objeto.setNombre(Nombre);
         Objeto.setCedula(Cedula);
         Objeto.setEdad(Edad);
         
         try{
             Metodo.create(Objeto);
-            return "Se creó el usuario exitosamente";
+            return true;
         }
         catch(Exception Ex){
-            return "Ocurrió un error, no se pudo crear el usuario";
+            return false;
         }
     }
-    public String Editar(int id,String Nombre, String Cedula, int Edad){
+    public boolean Editar(int id,String Nombre, String Cedula, int Edad){
         Objeto.setId(id);
           Objeto.setNombre(Nombre);
         Objeto.setCedula(Cedula);
@@ -36,19 +37,19 @@ public class DAOPersona {
         
         try{
             Metodo.edit(Objeto);
-            return "Se actualizó el usuario exitosamente";
+            return true;
         }
         catch(Exception Ex){
-            return "Ocurrió un error, no se pudo editar el usuario";
+            return false;
         }
     }
-    public String Borrar(int id){
+    public boolean Borrar(int id){
         try{
             Metodo.destroy(id);
-            return "Se eliminó exitosamente al usuario";
+            return true;
         }
         catch(NonexistentEntityException Ex){
-            return "Ocurrió un error, no se pudo eliminar el usuario";
+            return false;
         }
     }
       public Persona BuscarId(int id){ 
@@ -59,4 +60,7 @@ public class DAOPersona {
             return null;
         } 
     }
+      public List<Persona> DevolverTodos(){
+          return Metodo.findPersonaEntities();
+      }
 }

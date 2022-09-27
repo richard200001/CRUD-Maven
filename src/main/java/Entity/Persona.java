@@ -113,7 +113,9 @@ public class Persona implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.Persona[ id=" + id + " ]";
+        return "Persona{" + "id=" + id + ", nombre=" + nombre + ", cedula=" + cedula + ", edad=" + edad + '}';
     }
+
+
     
 }
