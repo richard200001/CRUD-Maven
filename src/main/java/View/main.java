@@ -18,6 +18,8 @@ public class main {
     public static void main(String[] args) {
         int num;
         DAOPersona obj = new DAOPersona();
+        Vista1 ob=new Vista1();
+        ob.setVisible(true);
         do{
             System.out.println("---MENÚ CRUD-------\n"
                     + "1.Crear usuario\n"
