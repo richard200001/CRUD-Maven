@@ -4,28 +4,31 @@
  */
 package View;
 
-import DAO.ButtonInsertDAO;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-
+import DAO.ButtonUpdateDAO;
+import View.Vista1;
 
 /**
  *
  * @author Usuario
  */
-public class Insertar extends JFrame{
+public class Actualizar extends JFrame implements ActionListener {
     private JPanel pDatos, pBoton;
-    private JLabel lName,lcedula, ledad; 
-    public JTextField tfName,tfcedula, tfedad; 
-    public JButton bInsertar;
-    // private Vista1 vista;
-    Container ppal;
+    public JLabel lNombre,lcedula,ledad; 
+    public int id;
+    public JTextField tfNombre,tfcedula,tfedad; 
+    public JButton bActualizar;
     
-    public Insertar(){
-        super("Insertar datos");// - es igual a usar setTitle("Calculadora:  ")
+    Container ppal;
+    private Vista1 vista;
+  
+    
+    public Actualizar(){
+        super("Actualizar datos");// - es igual a usar setTitle("Calculadora:  ")
         setSize(500,500); //Define el tamaño del FRAME
         setVisible(true); // Hace visible el FRAME(El objeto que contiene la interfaz)
         
@@ -45,7 +48,7 @@ public class Insertar extends JFrame{
        // setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
     }
-    
+  
     
     public void initComponente()
     {
@@ -54,27 +57,32 @@ public class Insertar extends JFrame{
         pBoton = new JPanel();
       
         //Se crean los bordes y los titulos de los paneles
-        pDatos.setBorder(BorderFactory.createTitledBorder("Ingrese nuevos datos: ")) ;
+        pDatos.setBorder(BorderFactory.createTitledBorder("Actualice los datos: ")) ;
       
         
         
         //Se crean los botones a usar
-        bInsertar = new JButton("Insertar");
-        ButtonInsertDAO contro=new ButtonInsertDAO(this);
-        bInsertar.addActionListener(contro);
+        bActualizar = new JButton("Actualizar");
+        ButtonUpdateDAO contro=new ButtonUpdateDAO(this , vista);
+        bActualizar.addActionListener(contro);
+        
          
-        //Se crean los etiquetas que se mostraran al lado del cuadro de texto, para el ingreso de datos.    
-        lName = new JLabel("Nombre : ") ;
+        //Se crean los etiquetas que se mostraran al lado del cuadro de texto, para el ingreso de datos. 
+       
+        lNombre = new JLabel("Nombre : ") ;
         lcedula = new JLabel("Cédula:") ;       
         ledad = new JLabel("Edad: ") ;
+        
         //Se crean los campos de textos donde el usuario ingresara los datos y 
         //se mostrarán los resultados. 
-        tfName = new JTextField(10);
-        tfName.setToolTipText("Ingrese el nombre");
+       
+        tfNombre = new JTextField(10);
+        tfNombre.setToolTipText("Actualice el nombre");
+        //tfNum2.setToolTipText("Si no ha seleccionado una celda de la tabla no podrá actualizar datos");
         tfcedula = new JTextField(10);
-        tfcedula.setToolTipText("Ingrese la cédula");
+        tfcedula.setToolTipText("Actualice la cédula");
         tfedad = new JTextField(10);
-        tfedad.setToolTipText("Ingrese la edad");
+        tfedad.setToolTipText("Actualice la edad");
         
         //Construcción de la intefaz: 
         //1. Crear los Layout para cada Panel
@@ -84,8 +92,9 @@ public class Insertar extends JFrame{
         //1. Crear el Layout para el Panel pDatos
         pDatos.setLayout(new GridLayout(3,2)); //Es como crear una tabla de 2X2
         //2. Adicionar los componentes a el panel pDatos (Etiquetas y campos de texto)
-        pDatos.add(lName);
-        pDatos.add(tfName);
+        
+        pDatos.add(lNombre);
+        pDatos.add(tfNombre);
         pDatos.add(lcedula);
         pDatos.add(tfcedula);
         pDatos.add(ledad);
@@ -95,7 +104,14 @@ public class Insertar extends JFrame{
         //1. Crear el Layout para el Panel pBotones
         pBoton.setLayout(new GridLayout(1,1)); //Es como crear una tabla de 1X4
         //2. Adicionar los componentes a el panel pBotones (Botones)
-        pBoton.add(bInsertar);
+        pBoton.add(bActualizar);
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      
+       
     }
 }
         

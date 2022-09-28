@@ -115,7 +115,11 @@ public class Persona implements Serializable {
     public String toString() {
         return "Persona{" + "id=" + id + ", nombre=" + nombre + ", cedula=" + cedula + ", edad=" + edad + '}';
     }
-
+    
+     public Object[] toArray(){
+        Object[] data = {id,nombre,cedula,edad};
+        return data;
+  }
 
     
 }

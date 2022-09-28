@@ -9,9 +9,6 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import static java.lang.Thread.sleep;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -61,7 +58,6 @@ public class Vista1 extends JFrame implements ActionListener {
         colocarPaneles();
         tablas();
         colocarBotones();
-        //colocarListasDesplegables();
         cajaTexto();
         colocarEtiquetas();
         eti2();
@@ -85,9 +81,9 @@ public class Vista1 extends JFrame implements ActionListener {
         
     }
     private void eti2(){
-        ImageIcon imag= new ImageIcon("fondointerfaz1.jpg");//
+        ImageIcon imag= new ImageIcon("fondointerfaz1.png");//
         label8=new JLabel(imag);
-        label8.setBounds(270,0,900,700);
+        label8.setBounds(270,0,800,700);
         label8.setIcon(new ImageIcon(imag.getImage().getScaledInstance(label8.getWidth(), label8.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(label8);
         
@@ -97,9 +93,9 @@ public class Vista1 extends JFrame implements ActionListener {
         label9.setIcon(new ImageIcon(imagi.getImage().getScaledInstance(label9.getWidth(), label9.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(label9);
         
-        ImageIcon ima= new ImageIcon("fondointerfaz1.jpg");//
+        ImageIcon ima= new ImageIcon("fondointerfaz1.png");//
         label10=new JLabel(ima);
-        label10.setBounds(270,0,900,700);
+        label10.setBounds(270,0,800,700);
         label10.setIcon(new ImageIcon(imag.getImage().getScaledInstance(label10.getWidth(), label10.getHeight(), Image.SCALE_SMOOTH)));
         panel2.add(label10);
         
@@ -126,7 +122,7 @@ public class Vista1 extends JFrame implements ActionListener {
         label2.setBounds(280,20,550,100);
         label2.setHorizontalAlignment(SwingConstants.CENTER);
         label2.setOpaque(false);
-        label2.setForeground(Color.WHITE);
+        label2.setForeground(Color.BLACK);
         label2.setFont(new Font("calibri",3,70));
         panel2.add(label2);
         
@@ -174,7 +170,7 @@ public class Vista1 extends JFrame implements ActionListener {
         boton.setEnabled(true);//si colocamos false, el boton se deshabilita
         boton.setOpaque(false);
         boton.setMnemonic('a');//establecemos alt + la letra que le coloque y el botón funciona
-        boton.setForeground(Color.WHITE);//establecemos el color de la letra del botón
+        boton.setForeground(Color.BLACK);//establecemos el color de la letra del botón
         boton.setBackground(Color.WHITE);
         boton.setFont(new Font("arial",1,15));//establecemos la fuente de la letra del botón 
         boton.setBorder(new RounderBorder(40)); 
@@ -187,7 +183,7 @@ public class Vista1 extends JFrame implements ActionListener {
         botonborrar.setEnabled(true);//si colocamos false, el boton se deshabilita
         botonborrar.setOpaque(false);
         botonborrar.setMnemonic('a');//establecemos alt + la letra que le coloque y el botón funciona
-        botonborrar.setForeground(Color.WHITE);//establecemos el color de la letra del botón
+        botonborrar.setForeground(Color.BLACK);//establecemos el color de la letra del botón
         botonborrar.setBackground(Color.WHITE);
         botonborrar.setFont(new Font("arial",1,15));//establecemos la fuente de la letra del botón 
         botonborrar.setBorder(new RounderBorder(40)); 
@@ -200,7 +196,7 @@ public class Vista1 extends JFrame implements ActionListener {
         botonbor.setEnabled(true);//si colocamos false, el boton se deshabilita
         botonbor.setOpaque(false);
         botonbor.setMnemonic('b');//establecemos alt + la letra que le coloque y el botón funciona
-        botonbor.setForeground(Color.WHITE);//establecemos el color de la letra del botón
+        botonbor.setForeground(Color.BLACK);//establecemos el color de la letra del botón
         botonbor.setBackground(Color.WHITE);
         botonbor.setFont(new Font("arial",1,15));//establecemos la fuente de la letra del botón 
         botonbor.setBorder(new RounderBorder(40)); 
@@ -213,7 +209,7 @@ public class Vista1 extends JFrame implements ActionListener {
         botoncon.setEnabled(true);//si colocamos false, el boton se deshabilita
         botoncon.setOpaque(false);
         botoncon.setMnemonic('c');//establecemos alt + la letra que le coloque y el botón funciona
-        botoncon.setForeground(Color.WHITE);//establecemos el color de la letra del botón
+        botoncon.setForeground(Color.BLACK);//establecemos el color de la letra del botón
         botoncon.setBackground(Color.WHITE);
         botoncon.setFont(new Font("arial",1,15));//establecemos la fuente de la letra del botón 
         botoncon.setBorder(new RounderBorder(40)); 
@@ -226,7 +222,7 @@ public class Vista1 extends JFrame implements ActionListener {
         botoninsert.setEnabled(true);//si colocamos false, el boton se deshabilita
         botoninsert.setOpaque(false);
         botoninsert.setMnemonic('s');//establecemos alt + la letra que le coloque y el botón funciona
-        botoninsert.setForeground(Color.WHITE);//establecemos el color de la letra del botón
+        botoninsert.setForeground(Color.BLACK);//establecemos el color de la letra del botón
         botoninsert.setBackground(Color.WHITE);
         botoninsert.setFont(new Font("arial",1,15));//establecemos la fuente de la letra del botón 
         botoninsert.setBorder(new RounderBorder(40)); 
@@ -314,21 +310,7 @@ public class Vista1 extends JFrame implements ActionListener {
         panel2.add(scroll);
     }
    
-    private void colocarListasDesplegables() {
-       String [] Tablas={"DeveloperCompany","User","Game","DownloadedGame"};
-       ListaDesplegable=new JComboBox(Tablas);
-       ListaDesplegable.setBounds(810,500,100,30);
-      // ListaDesplegable.addItem("Perú");//así se agrega otro país, tener en cuenta que como la lista
-       //que se habia colocado su objeto es de tipo string el dato que se pasa por paréntesis es tipo String
-       //ListaDesplegable.setSelectedItem("Brasil");//Hace que aparezco primero sellecionado el objeto que
-       //coloque en los parétesis
-       ListaDesplegable.setForeground(Color.black);//establecemos el color de la letra del botón
-       ListaDesplegable.setBackground(Color.WHITE);
-       ListaDesplegable.setFont(new Font("arial",1,10));
-       //ListaDesplegable.setBorder(new RoundedBorder(40)); 
-       boton.setOpaque(false);
-       panel2.add(ListaDesplegable);
-    }
+    
     int contador=0;
 
     @Override
@@ -354,12 +336,7 @@ public class Vista1 extends JFrame implements ActionListener {
             System.out.println(label11.getBounds().width);
             botonP3.setVisible(false);
             botonP4.setVisible(true);
-          try {
-              sleep(27);
-              label10.setBounds(-240, 0, 1500,700);
-          } catch (InterruptedException ex) {
-              Logger.getLogger(Vista1.class.getName()).log(Level.SEVERE, null, ex);
-          }
+          
       }
       if(e.getSource()==botonP4){
             
@@ -369,12 +346,7 @@ public class Vista1 extends JFrame implements ActionListener {
              System.out.println(label11.getBounds().width);
              botonP4.setVisible(false);
              botonP3.setVisible(true);
-              try {
-              sleep(27);
-              label10.setBounds(270, 0, 900,700);
-          } catch (InterruptedException ex) {
-              Logger.getLogger(Vista1.class.getName()).log(Level.SEVERE, null, ex);
-          }
+             
       } 
      
     }

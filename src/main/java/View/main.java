@@ -5,6 +5,7 @@
 package View;
 
 import DAO.DAOPersona;
+import DAO.PrincipalWindowDAO;
 import Entity.Persona;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ public class main {
         DAOPersona obj = new DAOPersona();
         Vista1 ob=new Vista1();
         ob.setVisible(true);
+        PrincipalWindowDAO c=new PrincipalWindowDAO(ob,obj);
         do{
             System.out.println("---MENÚ CRUD-------\n"
                     + "1.Crear usuario\n"
