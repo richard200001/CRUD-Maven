@@ -30,7 +30,7 @@ agregarle un sleep al menú del panel 1 y 2 con un for para que parezca transici
 public class Vista1 extends JFrame implements ActionListener {
     public JPanel panel,panel2;
     public JLabel label,label2,label3,label4,label5,label6,label7,label8,label9,label10,label11;
-    public JButton boton,boton2,botonP2,botonP3,botonP4,botoncon,botonbor,botoninsert,botonborrar;
+    public JButton boton,boton2,botonP2,botonP3,botonP4,botoncon,botonbor,botoninsert,botonborrar,botonbuscarid;
     public JTextField caja,caja2;
     public JComboBox ListaDesplegable;
     public JTable tabla1;
@@ -166,7 +166,7 @@ public class Vista1 extends JFrame implements ActionListener {
     private void colocarBotones(){
         boton=new JButton();
         boton.setText("Actualizar");//establecemos un texto al botón
-        boton.setBounds(800,335,150,50);//los dos primeros son las posiciones los otros dos son el ancho y largo
+        boton.setBounds(800,270,150,50);//los dos primeros son las posiciones los otros dos son el ancho y largo
         boton.setEnabled(true);//si colocamos false, el boton se deshabilita
         boton.setOpaque(false);
         boton.setMnemonic('a');//establecemos alt + la letra que le coloque y el botón funciona
@@ -179,7 +179,7 @@ public class Vista1 extends JFrame implements ActionListener {
         
         botonborrar=new JButton();
         botonborrar.setText("Borrar");//establecemos un texto al botón
-        botonborrar.setBounds(800,445,150,50);//los dos primeros son las posiciones los otros dos son el ancho y largo
+        botonborrar.setBounds(800,365,150,50);//los dos primeros son las posiciones los otros dos son el ancho y largo
         botonborrar.setEnabled(true);//si colocamos false, el boton se deshabilita
         botonborrar.setOpaque(false);
         botonborrar.setMnemonic('a');//establecemos alt + la letra que le coloque y el botón funciona
@@ -192,7 +192,7 @@ public class Vista1 extends JFrame implements ActionListener {
         
         botonbor=new JButton();
         botonbor.setText("Limpiar");//establecemos un texto al botón
-        botonbor.setBounds(800,550,150,50);//los dos primeros son las posiciones los otros dos son el ancho y largo
+        botonbor.setBounds(800,460,150,50);//los dos primeros son las posiciones los otros dos son el ancho y largo
         botonbor.setEnabled(true);//si colocamos false, el boton se deshabilita
         botonbor.setOpaque(false);
         botonbor.setMnemonic('b');//establecemos alt + la letra que le coloque y el botón funciona
@@ -204,7 +204,7 @@ public class Vista1 extends JFrame implements ActionListener {
         panel2.add(botonbor);
         
         botoncon=new JButton();
-        botoncon.setText("Consultar");//establecemos un texto al botón
+        botoncon.setText("Ver Todo");//establecemos un texto al botón
         botoncon.setBounds(800,100,150,50);//los dos primeros son las posiciones los otros dos son el ancho y largo
         botoncon.setEnabled(true);//si colocamos false, el boton se deshabilita
         botoncon.setOpaque(false);
@@ -218,7 +218,7 @@ public class Vista1 extends JFrame implements ActionListener {
         
         botoninsert=new JButton();
         botoninsert.setText("Insertar");//establecemos un texto al botón
-        botoninsert.setBounds(800,220,150,50);//los dos primeros son las posiciones los otros dos son el ancho y largo
+        botoninsert.setBounds(800,180,150,50);//los dos primeros son las posiciones los otros dos son el ancho y largo
         botoninsert.setEnabled(true);//si colocamos false, el boton se deshabilita
         botoninsert.setOpaque(false);
         botoninsert.setMnemonic('s');//establecemos alt + la letra que le coloque y el botón funciona
@@ -228,6 +228,19 @@ public class Vista1 extends JFrame implements ActionListener {
         botoninsert.setBorder(new RounderBorder(40)); 
         botoninsert.addActionListener(this);
         panel2.add(botoninsert);
+        
+        botonbuscarid=new JButton();
+        botonbuscarid.setText("Buscar");//establecemos un texto al botón
+        botonbuscarid.setBounds(800,550,150,50);//los dos primeros son las posiciones los otros dos son el ancho y largo
+        botonbuscarid.setEnabled(true);//si colocamos false, el boton se deshabilita
+        botonbuscarid.setOpaque(false);
+        botonbuscarid.setMnemonic('s');//establecemos alt + la letra que le coloque y el botón funciona
+        botonbuscarid.setForeground(Color.BLACK);//establecemos el color de la letra del botón
+        botonbuscarid.setBackground(Color.WHITE);
+        botonbuscarid.setFont(new Font("arial",1,15));//establecemos la fuente de la letra del botón 
+        botonbuscarid.setBorder(new RounderBorder(40)); 
+        botonbuscarid.addActionListener(this);
+        panel2.add(botonbuscarid);
         
         boton2=new JButton();
         boton2.setText("Iniciar Sesión");//establecemos un texto al botón

@@ -23,6 +23,7 @@ public class PrincipalWindowDAO implements ActionListener {
         vista.botoncon.addActionListener(this);
         vista.botoninsert.addActionListener(this);
         vista.botonborrar.addActionListener(this);
+        vista.botonbuscarid.addActionListener(this);
     }
 
    
@@ -62,7 +63,10 @@ public class PrincipalWindowDAO implements ActionListener {
             }
         }
        
-        
+        if(e.getSource()==vista.botonbuscarid){  
+            Consultar con=new Consultar(vista,obj);
+           
+        }
         if(e.getSource()==vista.botoninsert){
            Insertar ins=new Insertar();
         }
