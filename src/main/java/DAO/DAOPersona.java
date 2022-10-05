@@ -4,16 +4,26 @@
  */
 package DAO;
 
+
 import Controller.PersonaJpaController;
 import Controller.exceptions.NonexistentEntityException;
 import Entity.Persona;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
 import java.util.List;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /** * @author David */
 
 public class DAOPersona {
     
-     private  Persona Objeto = new Persona();
+    private  Persona Objeto = new Persona();
     private final PersonaJpaController Metodo = new PersonaJpaController();
     
     public boolean Crear(String Nombre, String Cedula, int Edad){
@@ -63,4 +73,39 @@ public class DAOPersona {
       public List<Persona> DevolverTodos(){
           return Metodo.findPersonaEntities();
       }
+      public String Codificar_Imagen(String DireccionImagen) throws IOException{//c:/imagen.png
+        FileInputStream file = new FileInputStream(DireccionImagen);
+        byte[] fileContent = file.readAllBytes();
+        String encodedString = Base64
+          .getEncoder()
+          .encodeToString(fileContent);
+        return encodedString;
+    }
+    //jLabel1.setIcon(Consulta.Deodificar_Imagen(Consulta.BuscarId(3).getFoto())); en swing
+    public ImageIcon Deodificar_Imagen(String base64Imagen, int size){
+        ImageIcon imagi = null;
+        if(!base64Imagen.equals("")){
+            
+        try{
+          byte[] decodedBytes = Base64
+          .getDecoder()
+          .decode(base64Imagen);
+          BufferedImage imagen;
+          InputStream in = new ByteArrayInputStream(decodedBytes);
+          imagen = ImageIO.read(in);
+          imagi = new ImageIcon(imagen.getScaledInstance(size, size, 0));
+          
+        }
+        
+        catch(IOException e){
+           
+        }
+        }else{
+            ImageIcon imageIcon = new ImageIcon("R.jpg"); // load the image to a imageIcon
+            Image image = imageIcon.getImage(); // transform it 
+            Image newimg = image.getScaledInstance(size, size, 0);
+            imagi = new ImageIcon(newimg); 
+        }
+        return imagi;
+    }
 }

@@ -9,8 +9,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import View.*;
 import Entity.*;
+import clases.IconCellRenderer;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 public class PrincipalWindowDAO implements ActionListener {
     Vista1 vista;
     DAOPersona obj;
@@ -29,14 +32,18 @@ public class PrincipalWindowDAO implements ActionListener {
    
     @Override
     public void actionPerformed(ActionEvent e) {
-     ;
+    
         if(e.getSource()==vista.botoncon){
             List <Persona> lista = new ArrayList();
                 
             lista=obj.DevolverTodos();   
-          vista.modelo.setRowCount(0);
+            vista.modelo.setRowCount(0);
+          int i=0;
            for(Persona h:lista){
+               ImageIcon perfil = obj.Deodificar_Imagen(h.getFoto(), 30);
                vista.modelo.addRow(h.toArray());
+               vista.modelo.setValueAt(new JLabel(perfil), i, 4);
+               i++;
            }
       
         }

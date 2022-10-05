@@ -4,6 +4,7 @@
  */
 package View;
 
+import clases.IconCellRenderer;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -23,10 +24,6 @@ import javax.swing.SwingConstants;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
 
-/*
-Hacer el mismo fondo del panel 1 en el panel 2 y hacer que se oculte el el menú del panel 2 
-agregarle un sleep al menú del panel 1 y 2 con un for para que parezca transición
-*/
 public class Vista1 extends JFrame implements ActionListener {
     public JPanel panel,panel2;
     public JLabel label,label2,label3,label4,label5,label6,label7,label8,label9,label10,label11;
@@ -37,37 +34,30 @@ public class Vista1 extends JFrame implements ActionListener {
     public DefaultTableModel modelo ;
     public Hilos hilo1=new Hilos();
     public Hilo1 hilo2;
-   // public tabla tabla2;
-    //FondoPanel fondo=new FondoPanel();
     public Vista1(){
-        setSize(1000,1000);
+        setSize(1000,700);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setTitle("Proyecto Java Maven");
+        setTitle("Proyecto Java CRUD Maven");
         setLocationRelativeTo(null);
         setResizable(false);
         iniciarComponentes();
         //this.pack();
-        this.setVisible(true);
-        
-    }
-
-    
+        this.setVisible(true);      
+    } 
     private void iniciarComponentes(){
-       
-        
         colocarPaneles();
         tablas();
         colocarBotones();
         cajaTexto();
         colocarEtiquetas();
         eti2();
-    
-        
+        tabla1.setDefaultRenderer(Object.class,new IconCellRenderer());
+        tabla1.setRowHeight(30);
     }
     private void colocarPaneles(){
         panel=new JPanel();
         panel.setBackground(Color.WHITE);//así le colocamos color al panel
-        panel.setBounds(0,0,1000,1000);
+        panel.setBounds(0,0,1000,700);
         panel.setLayout(null);
         panel.setVisible(true);
         this.add(panel);
@@ -182,7 +172,7 @@ public class Vista1 extends JFrame implements ActionListener {
         botonborrar.setBounds(800,365,150,50);//los dos primeros son las posiciones los otros dos son el ancho y largo
         botonborrar.setEnabled(true);//si colocamos false, el boton se deshabilita
         botonborrar.setOpaque(false);
-        botonborrar.setMnemonic('a');//establecemos alt + la letra que le coloque y el botón funciona
+        botonborrar.setMnemonic('o');//establecemos alt + la letra que le coloque y el botón funciona
         botonborrar.setForeground(Color.BLACK);//establecemos el color de la letra del botón
         botonborrar.setBackground(Color.WHITE);
         botonborrar.setFont(new Font("arial",1,15));//establecemos la fuente de la letra del botón 
@@ -195,7 +185,7 @@ public class Vista1 extends JFrame implements ActionListener {
         botonbor.setBounds(800,460,150,50);//los dos primeros son las posiciones los otros dos son el ancho y largo
         botonbor.setEnabled(true);//si colocamos false, el boton se deshabilita
         botonbor.setOpaque(false);
-        botonbor.setMnemonic('b');//establecemos alt + la letra que le coloque y el botón funciona
+        botonbor.setMnemonic('l');//establecemos alt + la letra que le coloque y el botón funciona
         botonbor.setForeground(Color.BLACK);//establecemos el color de la letra del botón
         botonbor.setBackground(Color.WHITE);
         botonbor.setFont(new Font("arial",1,15));//establecemos la fuente de la letra del botón 
@@ -208,7 +198,7 @@ public class Vista1 extends JFrame implements ActionListener {
         botoncon.setBounds(800,100,150,50);//los dos primeros son las posiciones los otros dos son el ancho y largo
         botoncon.setEnabled(true);//si colocamos false, el boton se deshabilita
         botoncon.setOpaque(false);
-        botoncon.setMnemonic('c');//establecemos alt + la letra que le coloque y el botón funciona
+        botoncon.setMnemonic('v');//establecemos alt + la letra que le coloque y el botón funciona
         botoncon.setForeground(Color.BLACK);//establecemos el color de la letra del botón
         botoncon.setBackground(Color.WHITE);
         botoncon.setFont(new Font("arial",1,15));//establecemos la fuente de la letra del botón 
@@ -221,7 +211,7 @@ public class Vista1 extends JFrame implements ActionListener {
         botoninsert.setBounds(800,180,150,50);//los dos primeros son las posiciones los otros dos son el ancho y largo
         botoninsert.setEnabled(true);//si colocamos false, el boton se deshabilita
         botoninsert.setOpaque(false);
-        botoninsert.setMnemonic('s');//establecemos alt + la letra que le coloque y el botón funciona
+        botoninsert.setMnemonic('n');//establecemos alt + la letra que le coloque y el botón funciona
         botoninsert.setForeground(Color.BLACK);//establecemos el color de la letra del botón
         botoninsert.setBackground(Color.WHITE);
         botoninsert.setFont(new Font("arial",1,15));//establecemos la fuente de la letra del botón 
@@ -234,7 +224,7 @@ public class Vista1 extends JFrame implements ActionListener {
         botonbuscarid.setBounds(800,550,150,50);//los dos primeros son las posiciones los otros dos son el ancho y largo
         botonbuscarid.setEnabled(true);//si colocamos false, el boton se deshabilita
         botonbuscarid.setOpaque(false);
-        botonbuscarid.setMnemonic('s');//establecemos alt + la letra que le coloque y el botón funciona
+        botonbuscarid.setMnemonic('b');//establecemos alt + la letra que le coloque y el botón funciona
         botonbuscarid.setForeground(Color.BLACK);//establecemos el color de la letra del botón
         botonbuscarid.setBackground(Color.WHITE);
         botonbuscarid.setFont(new Font("arial",1,15));//establecemos la fuente de la letra del botón 
@@ -266,7 +256,7 @@ public class Vista1 extends JFrame implements ActionListener {
         botonP3=new JButton();
         botonP3.setBounds(190,20,50,50);
         ImageIcon clit=new ImageIcon("tresrayitas1.png");
-        botonP3.setMnemonic('o');//establecemos alt + la letra que le coloque y el botón funciona
+        botonP3.setMnemonic('m');//establecemos alt + la letra que le coloque y el botón funciona
         botonP3.setOpaque(false);
         botonP3.setIcon(new ImageIcon(clit.getImage().getScaledInstance(botonP3.getWidth(), botonP3.getHeight(), Image.SCALE_SMOOTH)));
         botonP3.addActionListener(this);
@@ -276,7 +266,7 @@ public class Vista1 extends JFrame implements ActionListener {
         botonP4=new JButton();
         botonP4.setBounds(20,80,50,50);
         ImageIcon cli=new ImageIcon("tresrayitas1.png");
-        botonP4.setMnemonic('o');//establecemos alt + la letra que le coloque y el botón funciona
+        botonP4.setMnemonic('m');//establecemos alt + la letra que le coloque y el botón funciona
         botonP4.setOpaque(false);
         botonP4.setEnabled(true);
         botonP4.setVisible(false);
@@ -300,17 +290,17 @@ public class Vista1 extends JFrame implements ActionListener {
     public void tablas(){
        
         modelo= new DefaultTableModel();
+        
         modelo.addColumn("idPersona");
         modelo.addColumn("name");
         modelo.addColumn("cédula");
         modelo.addColumn("edad");
-        //String [] persona1={"Richard","17","Colombiano","Masculino"};
-        //modelo.addRow(persona1);
-        //Definiendo el ancho de las columnas
+        modelo.addColumn("foto");
         
         tabla1=new JTable(modelo);
-        int anchos[]={80,140,170,110};
-        for (int i = 0; i < 4; i++) {
+        
+        int anchos[]={80,140,170,110,140};
+        for (int i = 0; i < 5; i++) {
             tabla1.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
             
         }
@@ -319,6 +309,7 @@ public class Vista1 extends JFrame implements ActionListener {
         panel2.add(tabla1);
         JScrollPane scroll=new JScrollPane(tabla1,ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         tabla1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        
         scroll.setBounds(290, 100, 500, 500);
         panel2.add(scroll);
     }

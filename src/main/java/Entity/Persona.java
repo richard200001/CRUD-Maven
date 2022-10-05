@@ -4,6 +4,7 @@
  */
 package Entity;
 
+import DAO.DAOPersona;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -17,7 +18,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Dell
+ * @author Usuario01
  */
 @Entity
 @Table(name = "persona")
@@ -44,6 +45,17 @@ public class Persona implements Serializable {
     @Basic(optional = false)
     @Column(name = "edad")
     private int edad;
+    @Basic(optional = false)
+    @Column(name = "foto")
+    private String foto;
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
 
     public Persona() {
     }
@@ -115,8 +127,10 @@ public class Persona implements Serializable {
     public String toString() {
         return "Persona{" + "id=" + id + ", nombre=" + nombre + ", cedula=" + cedula + ", edad=" + edad + '}';
     }
-    
-     public Object[] toArray(){
+
+    public Object[] toArray(){
+        
+        DAOPersona obj = new DAOPersona ();
         Object[] data = {id,nombre,cedula,edad};
         return data;
   }
