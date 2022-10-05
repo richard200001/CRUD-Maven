@@ -5,97 +5,138 @@
 package View;
 
 import DAO.ButtonInsertDAO;
+import DAO.DAOPersona;
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 
 /**
  *
  * @author Usuario
  */
-public class Insertar extends JFrame{
-    private JPanel pDatos, pBoton;
-    private JLabel lName,lcedula, ledad; 
+public class Insertar extends JFrame  implements ActionListener{
+    private JPanel pDatos;
+    private JLabel lName,lcedula, ledad,lfoto,label6; 
     public JTextField tfName,tfcedula, tfedad; 
-    public JButton bInsertar;
-    // private Vista1 vista;
-    Container ppal;
-    
+    public JButton bInsertar, bCargarImage;
+    public String Salida,Entrada;
+    public DAOPersona Consulta=new DAOPersona();
     public Insertar(){
-        super("Insertar datos");// - es igual a usar setTitle("Calculadora:  ")
-        setSize(500,500); //Define el tamaño del FRAME
-        setVisible(true); // Hace visible el FRAME(El objeto que contiene la interfaz)
-        
-        initComponente(); // Método que instancia todos los componentes de la interfaz
-        ppal= getContentPane(); // Se crea el contenedor principal
-        
-        //1. Se define con un Layout la distribución de los Paneles dentro del contenedor principal
-        ppal.setLayout(new GridLayout(2,1)); //Es como crear una tabla de 2X2
-        //2. Adicionar los paneles a el panel Principal ppal (pDatos, pBotones, pResultados)    
-        ppal.add(pDatos);
-        ppal.add(pBoton);
-        
-        
-        pack();
-        
-        //Cierra el proceso al dar clic en el boton de X del FRAME
-       // setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(300,270);
+        setTitle("Insertar datos");
+        initComponente();
         setLocationRelativeTo(null);
+        this.setVisible(true);
     }
-    
-    
     public void initComponente()
     {
-        //Se crean los paneles que marcan la distribución de los elementos en el FRAME
         pDatos = new JPanel();
-        pBoton = new JPanel();
+        pDatos.setBackground(Color.WHITE);//así le colocamos color al panel
+        pDatos.setBounds(0,0,300,270);
+        pDatos.setLayout(null);
+        pDatos.setVisible(true);
+        this.add(pDatos);
       
+        
         //Se crean los bordes y los titulos de los paneles
         pDatos.setBorder(BorderFactory.createTitledBorder("Ingrese nuevos datos: ")) ;
       
         
         
         //Se crean los botones a usar
+        
         bInsertar = new JButton("Insertar");
+        bInsertar.setBounds(7, 180, 270, 30);
         ButtonInsertDAO contro=new ButtonInsertDAO(this);
         bInsertar.addActionListener(contro);
-         
+        pDatos.add(bInsertar);
+        
+        
         //Se crean los etiquetas que se mostraran al lado del cuadro de texto, para el ingreso de datos.    
         lName = new JLabel("Nombre : ") ;
-        lcedula = new JLabel("Cédula:") ;       
-        ledad = new JLabel("Edad: ") ;
-        //Se crean los campos de textos donde el usuario ingresara los datos y 
-        //se mostrarán los resultados. 
-        tfName = new JTextField(10);
-        tfName.setToolTipText("Ingrese el nombre");
-        tfcedula = new JTextField(10);
-        tfcedula.setToolTipText("Ingrese la cédula");
-        tfedad = new JTextField(10);
-        tfedad.setToolTipText("Ingrese la edad");
-        
-        //Construcción de la intefaz: 
-        //1. Crear los Layout para cada Panel
-        //2. Adicionar los componentes a los paneles
-        
-        
-        //1. Crear el Layout para el Panel pDatos
-        pDatos.setLayout(new GridLayout(3,2)); //Es como crear una tabla de 2X2
-        //2. Adicionar los componentes a el panel pDatos (Etiquetas y campos de texto)
+        lName.setBounds(7, 12,70, 30);
         pDatos.add(lName);
-        pDatos.add(tfName);
+         
+        lcedula = new JLabel("Cédula:") ;
+        lcedula.setBounds(7, 45, 70,30);
         pDatos.add(lcedula);
+        
+        ledad = new JLabel("Edad: ") ;
+        ledad.setBounds(7, 85,70,30);
+        pDatos.add(ledad); 
+        
+        lfoto = new JLabel("Foto: ") ;
+        lfoto.setBounds(7, 130, 70, 30);
+        pDatos.add(lfoto); 
+       
+        tfName = new JTextField(10);
+        tfName.setBounds(60,17,70,24);
+        tfName.setToolTipText("Ingrese el nombre");
+        pDatos.add(tfName);
+        
+        tfcedula = new JTextField(10);
+        tfcedula.setBounds(60, 50,70,24);
+        tfcedula.setToolTipText("Ingrese la cédula");
         pDatos.add(tfcedula);
-        pDatos.add(ledad);
-        pDatos.add(tfedad);
         
+        tfedad = new JTextField(10);
+        tfedad.setBounds(60,87, 70,24);
+        tfedad.setToolTipText("Ingrese la edad");
+        pDatos.add(tfedad); 
         
-        //1. Crear el Layout para el Panel pBotones
-        pBoton.setLayout(new GridLayout(1,1)); //Es como crear una tabla de 1X4
-        //2. Adicionar los componentes a el panel pBotones (Botones)
-        pBoton.add(bInsertar);
+        bCargarImage = new JButton("Cargar Imagen");
+        bCargarImage.setBounds(50,130, 220, 30);
+        bCargarImage.addActionListener( this);
+        pDatos.add(bCargarImage);
+     
+        ImageIcon image= new ImageIcon("R.jpg");//
+        label6=new JLabel(image);
+        label6.setBounds(150,17,115,100);
+        label6.setIcon(new ImageIcon(image.getImage().getScaledInstance(label6.getWidth(), label6.getHeight(), Image.SCALE_SMOOTH)));
+        pDatos.add(label6);
+
+       // create a separator
+        JSeparator s = new JSeparator();
+         
+        // set layout as vertical
+        s.setOrientation(SwingConstants.HORIZONTAL);
+        s.setBounds(7, 168, 270, 2);
+        pDatos.add(s);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+         if(e.getSource()==bCargarImage){
+           JFileChooser selectorArchivos = new JFileChooser();
+            FileNameExtensionFilter filtroImagen=new FileNameExtensionFilter("*.jpg, *.png, *.gif","jpg","png","gif");
+            selectorArchivos.setFileFilter(filtroImagen);
+            selectorArchivos.showOpenDialog(this);
+            File archivo = selectorArchivos.getSelectedFile();
+    
+            if ((archivo == null) || (archivo.getName().equals(""))) {
+                JOptionPane.showMessageDialog(this, "Inválido", "Nombre de archivo inválido", JOptionPane.ERROR_MESSAGE);
+            }
+            try {
+                Entrada = archivo.getAbsolutePath();
+                Entrada=Entrada.replace("\\", "/");
+                Salida = Consulta.Codificar_Imagen(Entrada);
+            } catch (IOException ex) {
+                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            label6.setIcon(Consulta.Deodificar_Imagen(Salida,100));
+      }
     }
 }
         

@@ -53,13 +53,16 @@ public class PrincipalWindowDAO implements ActionListener {
             Actualizar act=new Actualizar();
             try{
                 
-                vista.tabla1.getValueAt(row, 0);
+              int id = (int) vista.tabla1.getValueAt(row, 0);
                 String nombre=(String) vista.tabla1.getValueAt(row, 1);
                 String cedula=(String) vista.tabla1.getValueAt(row, 2);
                 String edad= String.valueOf(vista.tabla1.getValueAt(row, 3));
                 act.tfNombre.setText(nombre);
                 act.tfcedula.setText(cedula);
                 act.tfedad.setText(edad);
+                Persona p=new Persona();
+                p= obj.BuscarId(id);
+                act.label6.setIcon(obj.Deodificar_Imagen(p.getFoto(),30));
                 act.id= (int) vista.tabla1.getValueAt(row, 0);
                 
             }catch(Exception ex){

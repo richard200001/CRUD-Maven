@@ -26,11 +26,11 @@ public class DAOPersona {
     private  Persona Objeto = new Persona();
     private final PersonaJpaController Metodo = new PersonaJpaController();
     
-    public boolean Crear(String Nombre, String Cedula, int Edad){
+    public boolean Crear(String Nombre, String Cedula, int Edad, String foto){
         Objeto.setNombre(Nombre);
         Objeto.setCedula(Cedula);
         Objeto.setEdad(Edad);
-        
+        Objeto.setFoto(foto);
         try{
             Metodo.create(Objeto);
             return true;
@@ -39,11 +39,12 @@ public class DAOPersona {
             return false;
         }
     }
-    public boolean Editar(int id,String Nombre, String Cedula, int Edad){
+    public boolean Editar(int id,String Nombre, String Cedula, int Edad, String foto){
         Objeto.setId(id);
-          Objeto.setNombre(Nombre);
+        Objeto.setNombre(Nombre);
         Objeto.setCedula(Cedula);
         Objeto.setEdad(Edad);
+        Objeto.setFoto(foto);
         
         try{
             Metodo.edit(Objeto);

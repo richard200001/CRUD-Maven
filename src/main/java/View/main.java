@@ -22,7 +22,7 @@ public class main {
         Vista1 ob=new Vista1();
         ob.setVisible(true);
         PrincipalWindowDAO c=new PrincipalWindowDAO(ob,obj);
-        do{
+       /* do{
             System.out.println("---MENÚ CRUD-------\n"
                     + "1.Crear usuario\n"
                     + "2.Editar usuario\n"
@@ -116,7 +116,7 @@ public class main {
                 }
                
             }
-        }while(num!=6);
+        }while(num!=6);*/
     }
 }
 

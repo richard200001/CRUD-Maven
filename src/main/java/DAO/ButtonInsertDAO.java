@@ -21,8 +21,9 @@ public class ButtonInsertDAO implements ActionListener {
                 String no= in.tfName.getText();
                 String ce=in.tfcedula.getText();
                 int ed=Integer.parseInt(in.tfedad.getText());
-                 DAOPersona obj = new DAOPersona();
-                obj.Crear(no,ce,ed);
+                String fo=in.Salida;
+                DAOPersona obj = new DAOPersona();
+                obj.Crear(no,ce,ed,fo);
                 JOptionPane.showMessageDialog(null, "Inserción de datos Exitosa");   
         }
     }

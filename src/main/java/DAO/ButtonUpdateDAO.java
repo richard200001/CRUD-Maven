@@ -23,8 +23,9 @@ public class ButtonUpdateDAO implements ActionListener {
             int id= act.id;
             String cedula=act.tfcedula.getText();
             int edad=Integer.parseInt(act.tfedad.getText());
+             String fo=act.Salida;
             DAOPersona u=new DAOPersona();
-            u.Editar(id,nom,cedula,edad);
+            u.Editar(id,nom,cedula,edad,fo);
             JOptionPane.showMessageDialog(null, "Actualización de datos Exitosa");
          
             
