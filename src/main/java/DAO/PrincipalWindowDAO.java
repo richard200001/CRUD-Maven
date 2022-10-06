@@ -40,7 +40,7 @@ public class PrincipalWindowDAO implements ActionListener {
             vista.modelo.setRowCount(0);
           int i=0;
            for(Persona h:lista){
-               ImageIcon perfil = obj.Deodificar_Imagen(h.getFoto(), 30);
+               ImageIcon perfil = obj.Deodificar_Imagen(h.getFoto(), 65);
                vista.modelo.addRow(h.toArray());
                vista.modelo.setValueAt(new JLabel(perfil), i, 4);
                i++;
@@ -62,7 +62,7 @@ public class PrincipalWindowDAO implements ActionListener {
                 act.tfedad.setText(edad);
                 Persona p=new Persona();
                 p= obj.BuscarId(id);
-                act.label6.setIcon(obj.Deodificar_Imagen(p.getFoto(),30));
+                act.label6.setIcon(obj.Deodificar_Imagen(p.getFoto(),65));
                 act.id= (int) vista.tabla1.getValueAt(row, 0);
                 
             }catch(Exception ex){

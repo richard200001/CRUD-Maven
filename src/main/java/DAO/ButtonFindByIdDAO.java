@@ -34,7 +34,7 @@ public class ButtonFindByIdDAO implements ActionListener {
             int id=Integer.parseInt(con.tfid.getText());
             u=new DAOPersona();
             p = u.BuscarId(id);
-            ImageIcon perfil = u.Deodificar_Imagen(p.getFoto(), 30);
+            ImageIcon perfil = u.Deodificar_Imagen(p.getFoto(), 65);
             vista1.modelo.addRow(p.toArray());
             vista1.modelo.setValueAt(new JLabel(perfil), 0, 4);
             con.ldato.setText("");

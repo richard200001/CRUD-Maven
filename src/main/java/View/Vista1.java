@@ -52,7 +52,7 @@ public class Vista1 extends JFrame implements ActionListener {
         colocarEtiquetas();
         eti2();
         tabla1.setDefaultRenderer(Object.class,new IconCellRenderer());
-        tabla1.setRowHeight(30);
+        tabla1.setRowHeight(70);
     }
     private void colocarPaneles(){
         panel=new JPanel();
